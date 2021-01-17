@@ -1,6 +1,8 @@
 import setup
 import praw
 import keys
+import parse_csv
+import operator
 
 
 reddit = praw.Reddit(
@@ -11,19 +13,31 @@ reddit = praw.Reddit(
     password=keys.PASSWORD
 )
 
-# url = "https://www.reddit.com/r/veganrecipes/comments/iod9ba/vegan_mac_and_cheese_i_made_camping/"
-# submission = reddit.submission(url=url)
-# submission.comments.replace_more(limit=None)
-# for comment in submission.comments.list():
-#     print(comment.body)
+dictionary = parse_csv.stock_dictionary()
+
+
+def tckrcount(val):
+    lst = val.split()
+    for tckr in lst:
+        if tckr[-1] == '.' or tckr[-1] == ',':
+            tckr = tckr[0:len(tckr) - 1]
+        if tckr in dictionary:
+            dictionary[tckr] += 1
+
 
 subreddit = reddit.subreddit("wallstreetbets")
 print(subreddit.title)
 i = 1
-for submission in subreddit.hot(limit=3):
-    print("Submission "+str(i)+": "+submission.title+'\n')
-    submission.comments.replace_more(limit=0)
+for submission in subreddit.new(limit=1000):
+    if i == 1:
+        i += 1
+        continue
+    if submission.created_utc < 1610780400:
+        print('breaking out')
+        break
+    submission.comments.replace_more(limit=None)
     for comment in submission.comments.list():
-        print(comment.body)
-    i += 1
+        tckrcount(comment.body)
 
+sorted_stock_list = dict(sorted(dictionary.items(), key=operator.itemgetter(1),reverse=True))
+print(sorted_stock_list)
