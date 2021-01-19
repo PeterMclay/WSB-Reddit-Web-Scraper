@@ -28,7 +28,7 @@ def tckrcount(val):
 subreddit = reddit.subreddit("wallstreetbets")
 print(subreddit.title)
 i = 1
-for submission in subreddit.new(limit=1000):
+for submission in subreddit.new(limit=100):
     if i == 1:
         i += 1
         continue
