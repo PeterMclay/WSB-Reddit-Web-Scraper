@@ -10,4 +10,8 @@ def stock_dictionary():
             d[tckr[0]] = 0
         del d['DD']
         del d['AT']
+        del d['MOON']
+        del d['HOLD']
+        del d['DUDE']
+        del d['YOLO']
         return d
