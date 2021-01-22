@@ -8,7 +8,7 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 #Firebase Credential Setup
-cred = credentials.Certificate("wsbredditwebscrapper-firebase-adminsdk-gm77o-38c30d51c9.json")
+cred = credentials.Certificate("wsbredditwebscrapper-firebase-adminsdk-gm77o-5d81fe6603.json")
 firebase_admin.initialize_app(cred)
 
 #Firebase Database Setup
