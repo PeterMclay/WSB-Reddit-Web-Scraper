@@ -9,3 +9,11 @@ class WSBDbProvider with ChangeNotifier {
   Map get stockMap => _stockMap;
   Stream<WSBDb> get entries => db.streamWSB();
 }
+
+class Day5Provider with ChangeNotifier {
+  final db = Database();
+  Map _stockMap;
+
+  Map get stockMap => _stockMap;
+  Stream<Day5Total> get entries => db.streamDay5Total();
+}
