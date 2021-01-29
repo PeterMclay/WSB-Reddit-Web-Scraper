@@ -24,15 +24,9 @@ class MyApp extends StatelessWidget {
             create: (context) => Day5Provider()),
       ],
       child: MaterialApp(
-        home: HomeScreen(),
+        home: HomeView(),
       ),
     );
-    // return ChangeNotifierProvider(
-    //   create: (context) => WSBDbProvider(),
-    //   child: MaterialApp(
-    //     home: HomeScreen(),
-    //   ),
-    // );
   }
 }
 
@@ -73,31 +67,59 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             isSelected: isSelected,
           ),
-          StreamBuilder(
+
+          Expanded(
+            child: StreamBuilder(
               stream: isSelected[0] == true
                   ? wsbProvider.entries
                   : day5Provider.entries,
               builder: (context, snapshot) {
-                return Expanded(
-                  child: ListView.builder(
-                    itemCount: snapshot.data.stockMap.length,
-                    itemBuilder: (context, index) {
-                      String key = snapshot.data.stockMap.keys.elementAt(index);
-                      return Column(
-                        children: <Widget>[
-                          ListTile(
-                            title: Text("$key"),
-                            subtitle: Text("${snapshot.data.stockMap[key]}"),
-                          ),
-                          Divider(
-                            height: 2.0,
-                          ),
-                        ],
-                      );
-                    },
+                return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: DataTable(
+                    dataRowHeight: 32.0,
+                    columns: [
+                      DataColumn(label: Text('Stock')),
+                      DataColumn(label: Text('Mentions')),
+                    ],
+                    rows: snapshot.data.stockMap.entries
+                        .map<DataRow>((e) => DataRow(cells: [
+                              DataCell(Text(e.key.toString())),
+                              DataCell(Text(e.value.toString())),
+                            ]))
+                        .toList(),
                   ),
                 );
-              }),
+              },
+            ),
+          ),
+
+          // StreamBuilder(
+          //   stream: isSelected[0] == true
+          //       ? wsbProvider.entries
+          //       : day5Provider.entries,
+          //   builder: (context, snapshot) {
+          //     return Expanded(
+          //       child: ListView.builder(
+          //         itemCount: 100,
+          //         itemBuilder: (context, index) {
+          //           String key = snapshot.data.stockMap.keys.elementAt(index);
+          //           return Column(
+          //             children: <Widget>[
+          //               ListTile(
+          //                 title: Text("$key"),
+          //                 subtitle: Text("${snapshot.data.stockMap[key]}"),
+          //               ),
+          //               Divider(
+          //                 height: 2.0,
+          //               ),
+          //             ],
+          //           );
+          //         },
+          //       ),
+          //     );
+          //   },
+          // ),
         ],
       ),
     );
