@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_front_end/models/constants.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -10,31 +11,46 @@ class StockList extends StatefulWidget {
 class _StockListState extends State<StockList> {
   List<bool> isSelected = [true, false];
   bool sort = false;
+  List<String> titleColumn = ['Stock', 'Company', 'Mentions'];
   @override
   Widget build(BuildContext context) {
     final wsbProvider = Provider.of<WSBDbProvider>(context);
     final day5Provider = Provider.of<Day5Provider>(context);
     return Column(
       children: [
-        ToggleButtons(
-          children: <Widget>[
-            Text('24 Hour Total'),
-            Text('5 Day Total'),
-          ],
-          onPressed: (int index) {
-            setState(() {
-              for (int buttonIndex = 0;
-                  buttonIndex < isSelected.length;
-                  buttonIndex++) {
-                if (buttonIndex == index) {
-                  isSelected[buttonIndex] = true;
-                } else {
-                  isSelected[buttonIndex] = false;
+        Align(
+          alignment: Alignment.topRight,
+          child: ToggleButtons(
+            constraints: BoxConstraints(minHeight: 36, minWidth: 36),
+            selectedColor: Colors.blue,
+            fillColor: Colors.white,
+            selectedBorderColor: Colors.blue,
+            renderBorder: false,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('24 Hour Total'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text('5 Day Total'),
+              ),
+            ],
+            onPressed: (int index) {
+              setState(() {
+                for (int buttonIndex = 0;
+                    buttonIndex < isSelected.length;
+                    buttonIndex++) {
+                  if (buttonIndex == index) {
+                    isSelected[buttonIndex] = true;
+                  } else {
+                    isSelected[buttonIndex] = false;
+                  }
                 }
-              }
-            });
-          },
-          isSelected: isSelected,
+              });
+            },
+            isSelected: isSelected,
+          ),
         ),
         Expanded(
           child: StreamBuilder(
@@ -53,10 +69,16 @@ class _StockListState extends State<StockList> {
                     DataColumn(label: Text('Mentions')),
                   ],
                   rows: snapshot.data.stockMap.entries
-                      .map<DataRow>((e) => DataRow(cells: [
+                      .map<DataRow>(
+                        (e) => DataRow(
+                          cells: [
                             DataCell(Text(e.key.toString())),
+                            DataCell(Text(
+                                stocksCompany[e.key.toString()].toString())),
                             DataCell(Text(e.value.toString())),
-                          ]))
+                          ],
+                        ),
+                      )
                       .toList(),
                 ),
               );
