@@ -18,39 +18,48 @@ class _StockListState extends State<StockList> {
     final day5Provider = Provider.of<Day5Provider>(context);
     return Column(
       children: [
-        Align(
-          alignment: Alignment.topRight,
-          child: ToggleButtons(
-            constraints: BoxConstraints(minHeight: 36, minWidth: 36),
-            selectedColor: Colors.blue,
-            fillColor: Colors.white,
-            selectedBorderColor: Colors.blue,
-            renderBorder: false,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('24 Hour Total'),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text('5 Day Total'),
-              ),
-            ],
-            onPressed: (int index) {
-              setState(() {
-                for (int buttonIndex = 0;
-                    buttonIndex < isSelected.length;
-                    buttonIndex++) {
-                  if (buttonIndex == index) {
-                    isSelected[buttonIndex] = true;
-                  } else {
-                    isSelected[buttonIndex] = false;
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('25000/53000 comments parsed'),
+                Text('From Jan 30 7am - Jan 31 7am 2021')
+              ],
+            ),
+            ToggleButtons(
+              constraints: BoxConstraints(minHeight: 36, minWidth: 36),
+              selectedColor: Colors.blue,
+              fillColor: Colors.white,
+              selectedBorderColor: Colors.blue,
+              renderBorder: false,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('24 Hour Total'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('5 Day Total'),
+                ),
+              ],
+              onPressed: (int index) {
+                setState(() {
+                  for (int buttonIndex = 0;
+                      buttonIndex < isSelected.length;
+                      buttonIndex++) {
+                    if (buttonIndex == index) {
+                      isSelected[buttonIndex] = true;
+                    } else {
+                      isSelected[buttonIndex] = false;
+                    }
                   }
-                }
-              });
-            },
-            isSelected: isSelected,
-          ),
+                });
+              },
+              isSelected: isSelected,
+            ),
+          ],
         ),
         Expanded(
           child: StreamBuilder(
