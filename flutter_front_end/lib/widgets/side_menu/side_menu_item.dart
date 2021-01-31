@@ -18,7 +18,7 @@ class SideMenuItemDesktop extends StatelessWidget {
       leading: Image.asset(imageName),
       title: CustomText(
         text: text,
-        color: Colors.white,
+        color: Colors.black,
         size: active ? 20 : 18,
         weight: active ? FontWeight.bold : FontWeight.w300,
       ),
