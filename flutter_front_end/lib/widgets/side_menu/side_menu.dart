@@ -18,8 +18,11 @@ class SideMenu extends StatelessWidget {
       width: 200,
       child: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            Image.asset(
+              'images/stockscraper.png',
+            ),
             SideMenuItemDesktop(
               active: appProvider.currentPage == DisplayedPage.HOME,
               text: 'r/wallstreetbets',
