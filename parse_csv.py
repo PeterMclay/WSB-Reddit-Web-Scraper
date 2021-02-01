@@ -9,9 +9,9 @@ def stock_dictionary():
         for tckr in csv_reader:
             d[tckr[0]] = 0
         del d['DD']
-        del d['AT']
-        del d['MOON']
-        del d['HOLD']
-        del d['DUDE']
-        del d['YOLO']
+        del d['A']
+        # del d['MOON']
+        # del d['HOLD']
+        # del d['DUDE']
+        # del d['YOLO']
         return d

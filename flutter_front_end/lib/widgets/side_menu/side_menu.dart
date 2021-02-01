@@ -21,7 +21,7 @@ class SideMenu extends StatelessWidget {
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset(
-              'images/stockscraper.png',
+              'images/boop.png',
             ),
             SideMenuItemDesktop(
               active: appProvider.currentPage == DisplayedPage.HOME,
