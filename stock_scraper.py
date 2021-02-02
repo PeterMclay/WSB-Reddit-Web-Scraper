@@ -30,42 +30,47 @@ class StockScraper:
                 self.comments_parsed += 1
         self.dictionary = dict(sorted(self.dictionary.items(), key=operator.itemgetter(1), reverse=True))
         self.dictionary = {key: val for key, val in self.dictionary.items() if val != 0}
+        self.dictionary['comments_parsed'] = self.comments_parsed
+        self.dictionary['total_comments'] = self.total_comments
 
     def tckr_count(self, val):
         lst = val.split()
         for tckr in lst:
-            if tckr[-1] == '.' or tckr[-1] == ',':
+            if tckr[-1] == '.' or tckr[-1] == ',' or tckr[-1] == '!' or tckr[-1] == '?':
                 tckr = tckr[0:len(tckr) - 1]
             if tckr in self.dictionary:
                 self.dictionary[tckr] += 1
 
     def firebase_operations(self):
-        wsb_db_day0 = self.db.collection(self.subreddit_name).document('day0')
-        wsb_db_day1 = self.db.collection(self.subreddit_name).document('day1')
-        wsb_db_day2 = self.db.collection(self.subreddit_name).document('day2')
-        wsb_db_day3 = self.db.collection(self.subreddit_name).document('day3')
-        wsb_db_day4 = self.db.collection(self.subreddit_name).document('day4')
-        wsb_db_day5total = self.db.collection(self.subreddit_name).document('day5total')
+        db_day0 = self.db.collection(self.subreddit_name).document('day0')
+        db_day1 = self.db.collection(self.subreddit_name).document('day1')
+        db_day2 = self.db.collection(self.subreddit_name).document('day2')
+        db_day3 = self.db.collection(self.subreddit_name).document('day3')
+        db_day4 = self.db.collection(self.subreddit_name).document('day4')
+        db_day5total = self.db.collection(self.subreddit_name).document('day5total')
         days = self.db.collection(self.subreddit_name).limit(5).stream()
         day_data = []
+
         for data in days:
             day_data.append(data.to_dict())
         day_data.insert(0, self.dictionary)
-        day5total = wsb_db_day5total.get()
+        day5total = db_day5total.get()
         day_5_data = day5total.to_dict()
+
         # Add day 0 data into 5 day count data
         for key in day_data[0]:
             if key in day_5_data:
                 day_5_data[key] = day_5_data[key] + day_data[0][key]
             else:
                 day_5_data[key] = day_data[0][key]
-        wsb_db_day5total.set(day_5_data)
+        db_day5total.set(day_5_data)
+
         # Remove popped data from day_5 count
         subtracted_data = day_data.pop()
         for key in subtracted_data:
             if key in day_5_data:
                 day_5_data[key] = day_5_data[key] - subtracted_data[key]
-        wsb_db_day5total.set(day_5_data)
+        db_day5total.set(day_5_data)
         for i in range(5):
-            vars()['wsb_db_day' + str(i)].set(day_data[i])
+            vars()['db_day' + str(i)].set(day_data[i])
 

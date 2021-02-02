@@ -10,6 +10,11 @@ def stock_dictionary():
             d[tckr[0]] = 0
         del d['DD']
         del d['A']
+        del d['ARE']
+        del d['CAN']
+        del d['FORD']
+        del d['ALL']
+        del d['ATH']
         # del d['MOON']
         # del d['HOLD']
         # del d['DUDE']
