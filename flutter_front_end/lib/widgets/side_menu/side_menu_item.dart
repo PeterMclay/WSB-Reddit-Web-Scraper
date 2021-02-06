@@ -13,6 +13,7 @@ class SideMenuItemDesktop extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
       onTap: onTap,
       tileColor: null,
       leading: Image.asset(imageName),
