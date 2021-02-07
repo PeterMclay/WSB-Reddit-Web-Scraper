@@ -27,6 +27,9 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
       body: Row(
         children: [
           NavigationRail(
+            elevation: 1,
+            leading: Text('stock scraper'),
+            groupAlignment: 0.0,
             selectedIndex: _selectedIndex,
             labelType: NavigationRailLabelType.all,
             onDestinationSelected: (int index) {
@@ -36,20 +39,29 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
             },
             destinations: [
               NavigationRailDestination(
-                  icon: ImageIcon(
-                    AssetImage('images/wsb.png'),
-                  ),
-                  label: Text('r/wallstreetbets')),
+                icon: ImageIcon(
+                  AssetImage('images/wsb.png'),
+                ),
+                label: Text('r/wallstreetbets'),
+              ),
               NavigationRailDestination(
-                  icon: ImageIcon(
-                    AssetImage('images/stocks.png'),
-                  ),
-                  label: Text('r/stocks')),
+                icon: ImageIcon(
+                  AssetImage('images/stocks.png'),
+                ),
+                label: Text('r/stocks'),
+              ),
               NavigationRailDestination(
-                  icon: ImageIcon(
-                    AssetImage('images/stonks.png'),
-                  ),
-                  label: Text('r/investing')),
+                icon: ImageIcon(
+                  AssetImage('images/stonks.png'),
+                ),
+                label: Text('r/investing'),
+              ),
+              NavigationRailDestination(
+                icon: ImageIcon(
+                  AssetImage('images/pete_sauce.png'),
+                ),
+                label: Text('about'),
+              ),
             ],
           ),
           //SideMenu(),
