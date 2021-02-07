@@ -5,8 +5,10 @@ import 'package:flutter_front_end/models/wsbdb.dart';
 class WSBDbProvider with ChangeNotifier {
   final db = Database();
   Map _stockMap;
+  String _totalComments;
 
   Map get stockMap => _stockMap;
+  String get totalComments => _totalComments;
   Stream<WSBDb> get entries => db.streamWSB();
 }
 
