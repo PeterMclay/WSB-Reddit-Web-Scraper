@@ -1,26 +1,25 @@
-class WSBDb {
+class StockMarketDb {
   Map stockMap;
   String totalComments;
-  WSBDb({this.stockMap, this.totalComments});
+  StockMarketDb({this.stockMap, this.totalComments});
 
-  factory WSBDb.fromJson(Map<String, dynamic> map) {
+  factory StockMarketDb.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
 
-    return WSBDb(
-        stockMap: sortedMap,
-        totalComments: sortedMap['comments_parsed'].toString());
+    return StockMarketDb(
+        stockMap: sortedMap, totalComments: sortedMap['GME'].toString());
   }
 }
 
-class Day5Total {
+class StockMarketDbTotal {
   Map stockMap;
   String totalComments;
-  Day5Total({this.stockMap, this.totalComments});
-  factory Day5Total.fromJson(Map<String, dynamic> map) {
+  StockMarketDbTotal({this.stockMap, this.totalComments});
+  factory StockMarketDbTotal.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
-    return Day5Total(
+    return StockMarketDbTotal(
         stockMap: sortedMap,
         totalComments: sortedMap['comments_parsed'].toString());
   }

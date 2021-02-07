@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front_end/locator.dart';
-import 'package:flutter_front_end/providers/app_provider.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
-import 'package:flutter_front_end/routing/route_names.dart';
-import 'package:flutter_front_end/routing/router.dart';
+//import 'package:flutter_front_end/routing/route_names.dart';
+//import 'package:flutter_front_end/routing/router.dart';
+import 'package:flutter_front_end/widgets/layout_template/layout_template.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_front_end/services/database.dart';
@@ -22,16 +22,27 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: AppProvider.init()),
         ChangeNotifierProvider<WSBDbProvider>(
             create: (context) => WSBDbProvider()),
         ChangeNotifierProvider<Day5Provider>(
             create: (context) => Day5Provider()),
+        ChangeNotifierProvider<StocksDbProvider>(
+            create: (context) => StocksDbProvider()),
+        ChangeNotifierProvider<StocksDbTotalProvider>(
+            create: (context) => StocksDbTotalProvider()),
+        ChangeNotifierProvider<InvestingDbProvider>(
+            create: (context) => InvestingDbProvider()),
+        ChangeNotifierProvider<InvestingDbTotalProvider>(
+            create: (context) => InvestingDbTotalProvider()),
+        ChangeNotifierProvider<StockMarketDbProvider>(
+            create: (context) => StockMarketDbProvider()),
+        ChangeNotifierProvider<StockMarketDbTotalProvider>(
+            create: (context) => StockMarketDbTotalProvider()),
       ],
       child: MaterialApp(
-        onGenerateRoute: generateRoute,
-        initialRoute: LayoutRoute,
-        //home: HomeView(),
+        //onGenerateRoute: generateRoute,
+        //initialRoute: LayoutRoute,
+        home: LayoutTemplate(),
       ),
     );
   }
