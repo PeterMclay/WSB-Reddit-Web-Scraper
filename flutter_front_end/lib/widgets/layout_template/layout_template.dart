@@ -30,12 +30,18 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
     final stockMarketTotalProvider =
         Provider.of<StockMarketDbTotalProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xFFF7F9FB),
       body: Row(
         children: [
           NavigationRail(
-            elevation: 1,
-            leading: Text('stock scraper'),
+            backgroundColor: Color(0xFFEEF2F6),
+            unselectedIconTheme: IconThemeData(color: Color(0xFF97A0AF)),
+            unselectedLabelTextStyle: TextStyle(color: Color(0xFF97A0AF)),
+            selectedIconTheme: IconThemeData(color: Color(0xFF216FED)),
+            selectedLabelTextStyle: TextStyle(color: Color(0xFF216FED)),
+            elevation: 4,
+            leading: Text('stock scraper',
+                style: TextStyle(color: Color(0xFF343337))),
             groupAlignment: 0.0,
             selectedIndex: _selectedIndex,
             labelType: NavigationRailLabelType.all,
@@ -48,7 +54,7 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
             destinations: [
               NavigationRailDestination(
                 icon: ImageIcon(
-                  AssetImage('images/wsb.png'),
+                  AssetImage('images/wallstreetbets.png'),
                 ),
                 label: Text('r/wallstreetbets'),
               ),
@@ -60,7 +66,7 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
               ),
               NavigationRailDestination(
                 icon: ImageIcon(
-                  AssetImage('images/stonks.png'),
+                  AssetImage('images/investing.png'),
                 ),
                 label: Text('r/investing'),
               ),
@@ -98,10 +104,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                         }
                         return Expanded(
                           child: DispalyPage(
-                              day0: snapshot1.data.stockMap,
-                              day5Total: snapshot2.data.stockMap,
-                              day0Comments: snapshot1.data.totalComments,
-                              day5TotalComments: snapshot2.data.totalComments),
+                            day0: snapshot1.data.stockMap,
+                            day5Total: snapshot2.data.stockMap,
+                            day0Comments: snapshot1.data.totalComments,
+                            day5TotalComments: snapshot2.data.totalComments,
+                            title: 'wallstreetbets',
+                          ),
                         );
                       },
                     );
@@ -121,10 +129,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                         }
                         return Expanded(
                           child: DispalyPage(
-                              day0: snapshot1.data.stockMap,
-                              day5Total: snapshot2.data.stockMap,
-                              day0Comments: snapshot1.data.totalComments,
-                              day5TotalComments: snapshot2.data.totalComments),
+                            day0: snapshot1.data.stockMap,
+                            day5Total: snapshot2.data.stockMap,
+                            day0Comments: snapshot1.data.totalComments,
+                            day5TotalComments: snapshot2.data.totalComments,
+                            title: 'stocks',
+                          ),
                         );
                       },
                     );
@@ -144,10 +154,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                         }
                         return Expanded(
                           child: DispalyPage(
-                              day0: snapshot1.data.stockMap,
-                              day5Total: snapshot2.data.stockMap,
-                              day0Comments: snapshot1.data.totalComments,
-                              day5TotalComments: snapshot2.data.totalComments),
+                            day0: snapshot1.data.stockMap,
+                            day5Total: snapshot2.data.stockMap,
+                            day0Comments: snapshot1.data.totalComments,
+                            day5TotalComments: snapshot2.data.totalComments,
+                            title: 'investing',
+                          ),
                         );
                       },
                     );
@@ -167,10 +179,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                         }
                         return Expanded(
                           child: DispalyPage(
-                              day0: snapshot1.data.stockMap,
-                              day5Total: snapshot2.data.stockMap,
-                              day0Comments: snapshot1.data.totalComments,
-                              day5TotalComments: snapshot2.data.totalComments),
+                            day0: snapshot1.data.stockMap,
+                            day5Total: snapshot2.data.stockMap,
+                            day0Comments: snapshot1.data.totalComments,
+                            day5TotalComments: snapshot2.data.totalComments,
+                            title: 'StockMarket',
+                          ),
                         );
                       },
                     );
