@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_front_end/locator.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
 //import 'package:flutter_front_end/routing/route_names.dart';
 //import 'package:flutter_front_end/routing/router.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_front_end/services/database.dart';
 import 'package:flutter_front_end/models/wsbdb.dart';
 
 void main() async {
-  setupLocator();
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -40,6 +38,7 @@ class MyApp extends StatelessWidget {
             create: (context) => StockMarketDbTotalProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         //onGenerateRoute: generateRoute,
         //initialRoute: LayoutRoute,
         home: LayoutTemplate(),

@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
 import 'package:flutter_front_end/views/display_page.dart';
 import 'package:flutter_front_end/widgets/stock_list.dart';
-import 'package:flutter_front_end/locator.dart';
-//import 'package:flutter_front_end/routing/route_names.dart';
 import 'package:provider/provider.dart';
-//import 'package:flutter_front_end/routing/router.dart';
 import 'package:flutter_front_end/services/navigation_service.dart';
 
 class LayoutTemplate extends StatefulWidget {
@@ -38,10 +35,25 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
             unselectedIconTheme: IconThemeData(color: Color(0xFF97A0AF)),
             unselectedLabelTextStyle: TextStyle(color: Color(0xFF97A0AF)),
             selectedIconTheme: IconThemeData(color: Color(0xFF216FED)),
-            selectedLabelTextStyle: TextStyle(color: Color(0xFF216FED)),
+            selectedLabelTextStyle: TextStyle(
+                color: Color(0xFF216FED), fontWeight: FontWeight.bold),
             elevation: 4,
-            leading: Text('stock scraper',
-                style: TextStyle(color: Color(0xFF343337))),
+            leading: Column(
+              children: [
+                ImageIcon(
+                  AssetImage('images/logo.png'),
+                  color: Color(0xFF216FED),
+                  size: 48,
+                ),
+                Text(
+                  'stock scraper',
+                  style: TextStyle(
+                      color: Color(0xFF343337),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
             groupAlignment: 0.0,
             selectedIndex: _selectedIndex,
             labelType: NavigationRailLabelType.all,
@@ -102,14 +114,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                                 ConnectionState.waiting) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        return Expanded(
-                          child: DispalyPage(
-                            day0: snapshot1.data.stockMap,
-                            day5Total: snapshot2.data.stockMap,
-                            day0Comments: snapshot1.data.totalComments,
-                            day5TotalComments: snapshot2.data.totalComments,
-                            title: 'wallstreetbets',
-                          ),
+                        return DispalyPage(
+                          day0: snapshot1.data.stockMap,
+                          day5Total: snapshot2.data.stockMap,
+                          day0Comments: snapshot1.data.totalComments,
+                          day5TotalComments: snapshot2.data.totalComments,
+                          title: 'wallstreetbets',
                         );
                       },
                     );
@@ -127,14 +137,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                                 ConnectionState.waiting) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        return Expanded(
-                          child: DispalyPage(
-                            day0: snapshot1.data.stockMap,
-                            day5Total: snapshot2.data.stockMap,
-                            day0Comments: snapshot1.data.totalComments,
-                            day5TotalComments: snapshot2.data.totalComments,
-                            title: 'stocks',
-                          ),
+                        return DispalyPage(
+                          day0: snapshot1.data.stockMap,
+                          day5Total: snapshot2.data.stockMap,
+                          day0Comments: snapshot1.data.totalComments,
+                          day5TotalComments: snapshot2.data.totalComments,
+                          title: 'stocks',
                         );
                       },
                     );
@@ -152,14 +160,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                                 ConnectionState.waiting) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        return Expanded(
-                          child: DispalyPage(
-                            day0: snapshot1.data.stockMap,
-                            day5Total: snapshot2.data.stockMap,
-                            day0Comments: snapshot1.data.totalComments,
-                            day5TotalComments: snapshot2.data.totalComments,
-                            title: 'investing',
-                          ),
+                        return DispalyPage(
+                          day0: snapshot1.data.stockMap,
+                          day5Total: snapshot2.data.stockMap,
+                          day0Comments: snapshot1.data.totalComments,
+                          day5TotalComments: snapshot2.data.totalComments,
+                          title: 'investing',
                         );
                       },
                     );
@@ -177,14 +183,12 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                                 ConnectionState.waiting) {
                           return Center(child: CircularProgressIndicator());
                         }
-                        return Expanded(
-                          child: DispalyPage(
-                            day0: snapshot1.data.stockMap,
-                            day5Total: snapshot2.data.stockMap,
-                            day0Comments: snapshot1.data.totalComments,
-                            day5TotalComments: snapshot2.data.totalComments,
-                            title: 'StockMarket',
-                          ),
+                        return DispalyPage(
+                          day0: snapshot1.data.stockMap,
+                          day5Total: snapshot2.data.stockMap,
+                          day0Comments: snapshot1.data.totalComments,
+                          day5TotalComments: snapshot2.data.totalComments,
+                          title: 'StockMarket',
                         );
                       },
                     );

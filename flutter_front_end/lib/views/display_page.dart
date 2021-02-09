@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front_end/models/constants.dart';
+import 'package:buy_me_a_coffee_widget/buy_me_a_coffee_widget.dart';
 
 class DispalyPage extends StatefulWidget {
   final Map day0, day5Total;
@@ -20,7 +21,7 @@ class _DispalyPageState extends State<DispalyPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: EdgeInsets.all(16.0),
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.max,
@@ -89,7 +90,7 @@ class _DispalyPageState extends State<DispalyPage> {
                   //margin: EdgeInsets.all(10.0),
                   padding: EdgeInsets.all(0),
                   constraints: BoxConstraints(
-                    maxHeight: 800,
+                    maxHeight: 750,
                   ),
                   child: Card(
                     shape: RoundedRectangleBorder(
@@ -141,6 +142,16 @@ class _DispalyPageState extends State<DispalyPage> {
                   ),
                 ),
               ],
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 55.0,
+              child: BuyMeACoffeeWidget(
+                sponsorID: "petermclay",
+                theme: YellowTheme(),
+                customText: '',
+              ),
             ),
           ),
         ],

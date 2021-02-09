@@ -8,7 +8,8 @@ class StockMarketDb {
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
 
     return StockMarketDb(
-        stockMap: sortedMap, totalComments: sortedMap['GME'].toString());
+        stockMap: sortedMap,
+        totalComments: sortedMap['comments_parsed'].toString());
   }
 }
 

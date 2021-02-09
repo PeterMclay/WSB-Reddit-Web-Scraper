@@ -15,8 +15,8 @@ dependencies:
   firebase_core: ^0.7.0
   cloud_firestore: ^0.16.0
   provider: ^4.3.3
-  get_it: ^5.0.6
   cupertino_icons: ^1.0.1
+  buy_me_a_coffee_widget: ^1.0.1
 
 dev_dependencies:
   flutter_test:
