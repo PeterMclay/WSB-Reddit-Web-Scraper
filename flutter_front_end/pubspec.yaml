@@ -17,6 +17,8 @@ dependencies:
   provider: ^4.3.3
   cupertino_icons: ^1.0.1
   buy_me_a_coffee_widget: ^1.0.1
+  url_launcher: ^5.7.10
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +32,8 @@ flutter:
 
   assets:
     - images/
+
+  fonts:
+    - family: Cookie
+      fonts:
+      - asset: 'fonts/Cookie-Regular.ttf'

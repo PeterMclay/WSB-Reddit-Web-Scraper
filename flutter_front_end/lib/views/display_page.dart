@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front_end/models/constants.dart';
-import 'package:buy_me_a_coffee_widget/buy_me_a_coffee_widget.dart';
+import 'package:flutter_front_end/widgets/send_tendies.dart';
+import 'package:intl/intl.dart';
 
 class DispalyPage extends StatefulWidget {
   final Map day0, day5Total;
@@ -17,6 +18,54 @@ class DispalyPage extends StatefulWidget {
 
 class _DispalyPageState extends State<DispalyPage> {
   List<bool> isSelected = [true, false];
+  String today;
+  String yesterday;
+  String dayResults, day5Results;
+
+  @override
+  void initState() {
+    timeFunc(isSelected[0]);
+    print(today);
+    print(yesterday);
+    super.initState();
+  }
+
+  void timeFunc(bool day5) {
+    DateTime hourCheck = DateTime.now();
+    var formatterHourCheck = DateFormat('H');
+    var formatter = DateFormat('MMM d');
+    String formattedHourChecker = formatterHourCheck.format(hourCheck);
+    int intDate = int.parse(formattedHourChecker);
+    if (intDate < 12) {
+      int x, y;
+      if (day5) {
+        x = 1;
+        y = 2;
+      } else {
+        x = 1;
+        y = 7;
+      }
+      DateTime _now = DateTime.now().subtract(Duration(days: x));
+      DateTime _yesterday = DateTime.now().subtract(Duration(days: y));
+      today = formatter.format(_now);
+      yesterday = formatter.format(_yesterday);
+      dayResults = '24 hour results from 7am $yesterday to 7am $today ETC';
+      day5Results = '5 day results from 7am $yesterday to 7am $today ETC';
+    } else {
+      int y;
+      if (day5) {
+        y = 1;
+      } else {
+        y = 6;
+      }
+      DateTime _now = DateTime.now();
+      DateTime _yesterday = DateTime.now().subtract(Duration(days: y));
+      today = formatter.format(_now);
+      yesterday = formatter.format(_yesterday);
+      dayResults = '24 hour results from 7am $yesterday to 7am $today ETC';
+      day5Results = '5 day results from 7am $yesterday to 7am $today ETC';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +96,12 @@ class _DispalyPageState extends State<DispalyPage> {
                     ),
                   ),
                   Text(
-                    'Comments Parsed: ${isSelected[0] ? widget.day0Comments : widget.day5TotalComments}',
+                    '${isSelected[0] ? widget.day0Comments : widget.day5TotalComments} Comments Parsed',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
                   ),
+                  Text('${isSelected[0] ? dayResults : day5Results}'),
                 ],
               ),
             ],
@@ -80,6 +133,7 @@ class _DispalyPageState extends State<DispalyPage> {
                               isSelected[buttonIndex] = false;
                             }
                           }
+                          timeFunc(isSelected[0]);
                         });
                       },
                       isSelected: isSelected,
@@ -87,7 +141,7 @@ class _DispalyPageState extends State<DispalyPage> {
                   ],
                 ),
                 Container(
-                  //margin: EdgeInsets.all(10.0),
+                  margin: EdgeInsets.only(bottom: 16.0),
                   padding: EdgeInsets.all(0),
                   constraints: BoxConstraints(
                     maxHeight: 750,
@@ -97,7 +151,6 @@ class _DispalyPageState extends State<DispalyPage> {
                         borderRadius: BorderRadius.circular(16.0)),
                     //margin: EdgeInsets.symmetric(vertical: 24.0),
                     elevation: 2,
-                    shadowColor: Colors.black,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: DataTable(
@@ -145,14 +198,7 @@ class _DispalyPageState extends State<DispalyPage> {
             ),
           ),
           Center(
-            child: Container(
-              width: 55.0,
-              child: BuyMeACoffeeWidget(
-                sponsorID: "petermclay",
-                theme: YellowTheme(),
-                customText: '',
-              ),
-            ),
+            child: SendTendies(),
           ),
         ],
       ),
