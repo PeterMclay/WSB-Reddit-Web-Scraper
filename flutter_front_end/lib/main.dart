@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_front_end/services/database.dart';
 import 'package:flutter_front_end/models/wsbdb.dart';
+import 'package:flutter_front_end/widgets/layout_builder.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         //onGenerateRoute: generateRoute,
         //initialRoute: LayoutRoute,
-        home: LayoutTemplate(),
+        home: LayoutBuild(),
       ),
     );
   }
