@@ -20,7 +20,6 @@ class _DispalyPageState extends State<DispalyPage> {
   List<bool> isSelected = [true, false];
   String today;
   String yesterday;
-  String dayResults, day5Results;
 
   @override
   void initState() {
@@ -31,7 +30,7 @@ class _DispalyPageState extends State<DispalyPage> {
   }
 
   void timeFunc(bool day5) {
-    DateTime hourCheck = DateTime.now();
+    DateTime hourCheck = DateTime.now().toUtc();
     var formatterHourCheck = DateFormat('H');
     var formatter = DateFormat('MMM d');
     String formattedHourChecker = formatterHourCheck.format(hourCheck);
@@ -49,8 +48,6 @@ class _DispalyPageState extends State<DispalyPage> {
       DateTime _yesterday = DateTime.now().subtract(Duration(days: y));
       today = formatter.format(_now);
       yesterday = formatter.format(_yesterday);
-      dayResults = '24 hour results from 7am $yesterday to 7am $today ETC';
-      day5Results = '5 day results from 7am $yesterday to 7am $today ETC';
     } else {
       int y;
       if (day5) {
@@ -62,8 +59,6 @@ class _DispalyPageState extends State<DispalyPage> {
       DateTime _yesterday = DateTime.now().subtract(Duration(days: y));
       today = formatter.format(_now);
       yesterday = formatter.format(_yesterday);
-      dayResults = '24 hour results from 7am $yesterday to 7am $today ETC';
-      day5Results = '5 day results from 7am $yesterday to 7am $today ETC';
     }
   }
 
@@ -96,12 +91,9 @@ class _DispalyPageState extends State<DispalyPage> {
                     ),
                   ),
                   Text(
-                    '${isSelected[0] ? widget.day0Comments : widget.day5TotalComments} Comments Parsed',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
+                    '${isSelected[0] ? widget.day0Comments : widget.day5TotalComments} Comments Parsed (7am $yesterday - $today ETC)',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Text('${isSelected[0] ? dayResults : day5Results}'),
                 ],
               ),
             ],
