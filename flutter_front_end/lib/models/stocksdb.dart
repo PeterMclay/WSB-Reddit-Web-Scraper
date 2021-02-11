@@ -6,9 +6,10 @@ class StocksDb {
   factory StocksDb.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
-    return StocksDb(
-        stockMap: sortedMap,
-        totalComments: sortedMap['comments_parsed'].toString());
+    String commentsParsed = sortedMap['comments_parsed'].toString();
+    sortedMap.remove('comments_parsed');
+    sortedMap.remove('total_comments');
+    return StocksDb(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }
 
@@ -19,8 +20,9 @@ class StocksDbTotal {
   factory StocksDbTotal.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
-    return StocksDbTotal(
-        stockMap: sortedMap,
-        totalComments: sortedMap['comments_parsed'].toString());
+    String commentsParsed = sortedMap['comments_parsed'].toString();
+    sortedMap.remove('comments_parsed');
+    sortedMap.remove('total_comments');
+    return StocksDbTotal(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }

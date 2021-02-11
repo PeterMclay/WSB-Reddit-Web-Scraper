@@ -6,10 +6,10 @@ class WSBDb {
   factory WSBDb.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
-
-    return WSBDb(
-        stockMap: sortedMap,
-        totalComments: sortedMap['comments_parsed'].toString());
+    String commentsParsed = sortedMap['comments_parsed'].toString();
+    sortedMap.remove('comments_parsed');
+    sortedMap.remove('total_comments');
+    return WSBDb(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }
 
@@ -20,8 +20,9 @@ class Day5Total {
   factory Day5Total.fromJson(Map<String, dynamic> map) {
     Map<String, dynamic> sortedMap = Map.fromEntries(
         map.entries.toList()..sort((e1, e2) => e2.value.compareTo(e1.value)));
-    return Day5Total(
-        stockMap: sortedMap,
-        totalComments: sortedMap['comments_parsed'].toString());
+    String commentsParsed = sortedMap['comments_parsed'].toString();
+    sortedMap.remove('comments_parsed');
+    sortedMap.remove('total_comments');
+    return Day5Total(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }

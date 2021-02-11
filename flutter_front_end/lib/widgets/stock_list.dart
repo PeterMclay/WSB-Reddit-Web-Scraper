@@ -70,9 +70,9 @@ class _StockListState extends State<StockList> {
                 Container(
                   margin: EdgeInsets.all(10.0),
                   padding: EdgeInsets.all(0),
-                  constraints: BoxConstraints(
-                    maxHeight: 700,
-                  ),
+                  // constraints: BoxConstraints(
+                  //   maxHeight: 700,
+                  // ),
                   child: Card(
                     elevation: 1,
                     shadowColor: Colors.black,

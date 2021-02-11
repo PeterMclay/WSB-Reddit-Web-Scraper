@@ -72,7 +72,7 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
               ),
               NavigationRailDestination(
                 icon: ImageIcon(
-                  AssetImage('images/stocks.png'),
+                  AssetImage('images/stocksIcon.png'),
                 ),
                 label: Text('r/stocks'),
               ),
@@ -84,7 +84,7 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
               ),
               NavigationRailDestination(
                 icon: ImageIcon(
-                  AssetImage('images/StockMarket.png'),
+                  AssetImage('images/StockMarketIcon.png'),
                 ),
                 label: Text('r/StockMarket'),
               ),

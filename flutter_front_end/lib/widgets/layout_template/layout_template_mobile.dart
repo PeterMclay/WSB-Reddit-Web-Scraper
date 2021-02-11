@@ -78,7 +78,7 @@ class _LayoutTemplateMobileState extends State<LayoutTemplateMobile> {
             ListTile(
               leading: ImageIcon(
                 AssetImage(
-                  'images/stocks.png',
+                  'images/stocksIcon.png',
                 ),
                 color:
                     _selectedIndex == 1 ? Color(0xFF216FED) : Color(0xFF97A0AF),
@@ -126,7 +126,7 @@ class _LayoutTemplateMobileState extends State<LayoutTemplateMobile> {
             ListTile(
               leading: ImageIcon(
                 AssetImage(
-                  'images/StockMarket.png',
+                  'images/StockMarketIcon.png',
                 ),
                 color:
                     _selectedIndex == 3 ? Color(0xFF216FED) : Color(0xFF97A0AF),
