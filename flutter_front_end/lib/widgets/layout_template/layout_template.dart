@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
 import 'package:flutter_front_end/views/display_page.dart';
-import 'package:flutter_front_end/widgets/stock_list.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_front_end/services/navigation_service.dart';
 
 class LayoutTemplate extends StatefulWidget {
   @override
@@ -46,7 +44,7 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                   size: 48,
                 ),
                 Text(
-                  'stock scraper',
+                  'stonk scraper',
                   style: TextStyle(
                       color: Color(0xFF343337),
                       fontSize: 18.0,
@@ -87,12 +85,6 @@ class _LayoutTemplateState extends State<LayoutTemplate> {
                   AssetImage('images/StockMarketIcon.png'),
                 ),
                 label: Text('r/StockMarket'),
-              ),
-              NavigationRailDestination(
-                icon: ImageIcon(
-                  AssetImage('images/pete_sauce.png'),
-                ),
-                label: Text('about'),
               ),
             ],
           ),

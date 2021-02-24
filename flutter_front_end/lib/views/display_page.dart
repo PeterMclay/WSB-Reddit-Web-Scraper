@@ -25,8 +25,6 @@ class _DispalyPageState extends State<DispalyPage> {
   @override
   void initState() {
     timeFunc(isSelected[0]);
-    print(today);
-    print(yesterday);
     super.initState();
   }
 
@@ -66,6 +64,7 @@ class _DispalyPageState extends State<DispalyPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
       child: Column(
@@ -94,7 +93,7 @@ class _DispalyPageState extends State<DispalyPage> {
                     ),
                   ),
                   Text(
-                    '${isSelected[0] ? widget.day0Comments : widget.day5TotalComments} Comments Parsed',
+                    '${isSelected[0] ? widget.day0Comments : widget.day5TotalComments} comments parsed',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Text(
@@ -120,10 +119,9 @@ class _DispalyPageState extends State<DispalyPage> {
                         renderBorder: false,
                         children: <Widget>[
                           Text('24 Hour'),
-                          Text('  5 Day'),
+                          Text('   5 Day'),
                         ],
                         onPressed: (int index) {
-                          print(width);
                           setState(() {
                             for (int buttonIndex = 0;
                                 buttonIndex < isSelected.length;
@@ -141,11 +139,13 @@ class _DispalyPageState extends State<DispalyPage> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 8.0),
                   Container(
                     margin: EdgeInsets.only(bottom: 16.0),
                     padding: EdgeInsets.all(0),
                     constraints: BoxConstraints(
-                      maxHeight: 750,
+                      //maxHeight: 750,
+                      maxHeight: height * 0.82,
                     ),
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -203,6 +203,22 @@ class _DispalyPageState extends State<DispalyPage> {
           Center(
             child: SendTendies(),
           ),
+          SizedBox(height: 16.0),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                    '*All information found here is for informational purposes only and should not be construed as personal investment advice.'),
+                SizedBox(
+                  height: 8.0,
+                ),
+                Text(
+                    '*Some symbols are excluded as they do not represent interest in the actual stock e.g. RH, EV'),
+              ],
+            ),
+          )
         ],
       ),
     );

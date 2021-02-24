@@ -9,6 +9,8 @@ class StockMarketDb {
     String commentsParsed = sortedMap['comments_parsed'].toString();
     sortedMap.remove('comments_parsed');
     sortedMap.remove('total_comments');
+    sortedMap.remove('RH');
+    sortedMap.remove('EV');
     return StockMarketDb(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }
@@ -23,6 +25,8 @@ class StockMarketDbTotal {
     String commentsParsed = sortedMap['comments_parsed'].toString();
     sortedMap.remove('comments_parsed');
     sortedMap.remove('total_comments');
+    sortedMap.remove('RH');
+    sortedMap.remove('EV');
     return StockMarketDbTotal(
         stockMap: sortedMap, totalComments: commentsParsed);
   }

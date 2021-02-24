@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
             create: (context) => StockMarketDbTotalProvider()),
       ],
       child: MaterialApp(
+        title: "Stonk Scraper",
         debugShowCheckedModeBanner: false,
         //onGenerateRoute: generateRoute,
         //initialRoute: LayoutRoute,

@@ -9,6 +9,8 @@ class WSBDb {
     String commentsParsed = sortedMap['comments_parsed'].toString();
     sortedMap.remove('comments_parsed');
     sortedMap.remove('total_comments');
+    sortedMap.remove('RH');
+    sortedMap.remove('EV');
     return WSBDb(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }
@@ -23,6 +25,8 @@ class Day5Total {
     String commentsParsed = sortedMap['comments_parsed'].toString();
     sortedMap.remove('comments_parsed');
     sortedMap.remove('total_comments');
+    sortedMap.remove('RH');
+    sortedMap.remove('EV');
     return Day5Total(stockMap: sortedMap, totalComments: commentsParsed);
   }
 }

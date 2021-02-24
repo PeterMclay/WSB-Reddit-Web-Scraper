@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_front_end/providers/wsbdb_provider.dart';
 import 'package:flutter_front_end/views/display_page.dart';
-import 'package:flutter_front_end/widgets/stock_list.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_front_end/services/navigation_service.dart';
 
 class LayoutTemplateMobile extends StatefulWidget {
   @override
@@ -30,8 +28,11 @@ class _LayoutTemplateMobileState extends State<LayoutTemplateMobile> {
       backgroundColor: Color(0xFFF7F9FB),
       appBar: AppBar(
         title: Text(
-          'Stock Scraper',
-          style: TextStyle(color: Color(0xFF343337)),
+          'stonk scraper',
+          style: TextStyle(
+            color: Color(0xFF343337),
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           Padding(
